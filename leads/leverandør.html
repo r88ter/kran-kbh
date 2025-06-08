@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leadoversigt | Kranservice KBH</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: #007f5f;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+    }
+    .locked {
+      background: #eee;
+      color: #999;
+    }
+    .button {
+      background: #007f5f;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Leads - Kranopgaver i København</h1>
+  <p>Oversigten opdateres automatisk med nye leads.</p>
+  <table id="leads">
+    <thead>
+      <tr>
+        <th>Dato</th>
+        <th>Område</th>
+        <th>Opgave</th>
+        <th>Se detaljer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rækker hentes fra Google Sheets via JavaScript -->
+    </tbody>
+  </table>
+
+  <script>
+    const SHEET_ID = 'DIT_SHEET_ID';
+    const SHEET_GID = '0';
+    const API_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+
+    fetch(API_URL)
+      .then(res => res.text())
+      .then(text => {
+        const json = JSON.parse(text.substr(47).slice(0, -2));
+        const rows = json.table.rows;
+        const tbody = document.querySelector("#leads tbody");
+
+        rows.forEach((row, index) => {
+          const date = row.c[0]?.v || "";
+          const area = row.c[1]?.v || "";
+          const task = row.c[2]?.v || "";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${date}</td>
+            <td>${area}</td>
+            <td>${task}</td>
+            <td><a class="button" href="#">Se (betal)</a></td>
+          `;
+          tbody.appendChild(tr);
+        });
+      });
+  </script>
+</body>
+</html>
