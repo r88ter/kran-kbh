@@ -2,14 +2,79 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <title>Leads oversigt</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lej kran i København – Hurtig & professionel kranudlejning</title>
+  <meta name="description" content="Skal du leje kran i København? Få tilbud fra professionelle kranudlejere med erfarne operatører. Hurtig, sikker og fleksibel kranudlejning i Københavnsområdet." />
+  <meta name="keywords" content="kranudlejning københavn, lej kran københavn, kran til leje københavn, kranservice københavn" />
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: #f7fafc;
+      margin: 0; padding: 1.5rem;
+      color: #1a202c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    main {
+      background: white;
+      padding: 2rem 1.5rem;
+      max-width: 480px;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgb(0 0 0 / 0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #2b6cb0;
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+      font-weight: 700;
+    }
+    p.lead {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: #2c5282;
+      font-size: 1.1rem;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 600px; /* Tally embed height */
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+    }
+    footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #718096;
+      user-select: none;
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: 1.5rem 1rem;
+      }
+      iframe {
+        height: 550px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Velkommen til leads oversigten</h1>
-  <ul>
-    <li><a href="lead-preview.html?id=1">Lead 1 - Postnummer 2100</a></li>
-    <li><a href="lead-preview.html?id=2">Lead 2 - Postnummer 2200</a></li>
-  </ul>
+  <main>
+    <h1>Lej kran i København</h1>
+    <p class="lead">Få hurtig kontakt til professionelle kranudlejere i Københavnsområdet. Udfyld formularen herunder – så kontakter vi dig med tilbud.</p>
+    
+    <!-- Tally embed med dit link -->
+    <iframe src="https://tally.so/embed/woaOAV?alignLeft=1&hideTitle=1&transparentBackground=1" title="Lej kran - Formular"></iframe>
+  </main>
+
+  <footer>
+    © 2025 KranUdlejningKbh.dk – Professionel kranudlejning i København
+  </footer>
 </body>
 </html>
