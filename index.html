@@ -9,99 +9,106 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-      body {
+      :root {
+        --primary: #007f5f;
+        --accent: #2b9348;
+        --bg: #f7f7f7;
+        --text: #1a1a1a;
+      }
+      * {
+        box-sizing: border-box;
         margin: 0;
+        padding: 0;
+      }
+      body {
         font-family: 'Inter', sans-serif;
-        background-color: #f9f9f9;
-        color: #222;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
       }
       header {
-        background-color: #0a74da;
+        background: url('https://images.unsplash.com/photo-1607968565048-eaebfbf0f78e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+        padding: 5rem 1rem;
         color: white;
-        padding: 2rem 1rem;
         text-align: center;
       }
       header h1 {
-        margin: 0 0 0.5rem;
-        font-size: 2rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
       }
       header p {
-        margin: 0;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
       }
       main {
-        max-width: 800px;
+        max-width: 1000px;
         margin: 2rem auto;
         padding: 0 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
       }
-      .content {
+      .form-embed, .content {
         background: white;
         padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
       }
       .content h2 {
-        margin-top: 0;
-        font-size: 1.5rem;
+        font-size: 1.75rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
       }
       .content ul {
-        padding-left: 1.2rem;
-      }
-      .form-embed {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        list-style: disc;
+        padding-left: 1.5rem;
       }
       iframe {
-        border: none;
         width: 100%;
-        height: 500px;
+        height: 600px;
+        border: none;
       }
       footer {
-        background: #eee;
+        background: #e0e0e0;
         text-align: center;
-        padding: 1.5rem 1rem;
+        padding: 1rem;
         font-size: 0.9rem;
-        color: #666;
       }
       @media (max-width: 600px) {
         header h1 {
-          font-size: 1.5rem;
+          font-size: 1.8rem;
         }
-        .form-embed iframe {
-          height: 650px;
+        iframe {
+          height: 700px;
         }
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>Kranudlejning i København</h1>
-      <p>Få hjælp til kranarbejde hurtigt og nemt - vi klarer det for dig</p>
+      <h1>Lej en mobilkran i København</h1>
+      <p>Få 1 leverandør med det samme - Udfyld formularen og kom i gang hurtigt!</p>
     </header>
 
     <main>
-      <section class="content">
-        <h2>Hvordan virker det?</h2>
-        <ul>
-          <li>Udfyld den korte formular nedenfor</li>
-          <li>Vi matcher dig med en erfaren leverandør</li>
-          <li>Du bliver kontaktet hurtigt med et tilbud</li>
-        </ul>
+      <section class="form-embed">
+        <h2>Få hjælp til dit kranprojekt</h2>
+        <p>Vores samarbejdspartner står klar til at hjælpe dig. Det er nemt, hurtigt og uforpligtende.</p>
+        <iframe src="https://tally.so/r/woaOAV" loading="lazy"></iframe>
       </section>
 
-      <section class="form-embed">
-        <h2>Udfyld formularen og bliv kontaktet</h2>
-        <iframe src="https://tally.so/r/woaOAV" loading="lazy"></iframe>
+      <section class="content">
+        <h2>Hvorfor bruge os?</h2>
+        <ul>
+          <li>Hurtigt svar på din henvendelse</li>
+          <li>Erfarne fagfolk med det rette udstyr</li>
+          <li>Kun 1 leverandør - ingen prisjagt</li>
+          <li>Gratis og uforpligtende kontakt</li>
+        </ul>
       </section>
     </main>
 
     <footer>
-      &copy; 2025 Kranservice KBH. Alle rettigheder forbeholdes.
+      &copy; 2025 Kranservice KBH - Din lokale partner i København og omegn.
     </footer>
   </body>
 </html>
