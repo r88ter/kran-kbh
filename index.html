@@ -2,45 +2,51 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>Lej kran i København | Professionel & hurtig kranudlejning</title>
   <meta name="description" content="Lej kran i København hos professionelle kranudlejere. Få et gratis og uforpligtende tilbud på kranudlejning med erfarne operatører. Kontakt os i dag!" />
   <meta name="keywords" content="lej kran København, kranudlejning København, kran til leje København, kran service København, kranudlejere København" />
   <link rel="canonical" href="https://din-landingpage.netlify.app/" />
   <link rel="alternate" hreflang="da" href="https://din-landingpage.netlify.app/" />
   <style>
+    /* Grundlæggende styling */
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
         Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       background: #f7fafc;
-      margin: 0; padding: 1.5rem;
+      margin: 0;
+      padding: 1rem;
       color: #1a202c;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       min-height: 100vh;
+      box-sizing: border-box;
     }
     main {
-      background: white;
-      padding: 2rem 1.5rem;
+      background: #fff;
       max-width: 480px;
       width: 100%;
+      padding: 1.5rem 1.5rem 2rem;
       border-radius: 10px;
-      box-shadow: 0 10px 25px rgb(0 0 0 / 0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-sizing: border-box;
       text-align: center;
     }
     header h1 {
       color: #2b6cb0;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
+      line-height: 1.2;
     }
     header p {
       font-weight: 600;
       color: #2c5282;
-      font-size: 1.1rem;
+      font-size: 1rem;
       margin-top: 0;
       margin-bottom: 1.5rem;
+      line-height: 1.4;
     }
     ul.benefits {
       list-style: none;
@@ -50,9 +56,11 @@
       text-align: left;
       color: #2c5282;
       font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.4;
     }
     ul.benefits li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
       position: relative;
       padding-left: 24px;
     }
@@ -66,9 +74,11 @@
     iframe {
       border: none;
       width: 100%;
-      height: 600px;
+      min-height: 600px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 1rem;
+      /* Mobile friendly height */
     }
     footer {
       text-align: center;
@@ -77,12 +87,21 @@
       color: #718096;
       user-select: none;
     }
+    /* Mobiljustering */
     @media (max-width: 600px) {
       main {
-        padding: 1.5rem 1rem;
+        padding: 1rem 1rem 1.5rem;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header p, ul.benefits {
+        font-size: 0.95rem;
       }
       iframe {
-        height: 550px;
+        min-height: 500px;
       }
     }
   </style>
