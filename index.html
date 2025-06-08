@@ -27,85 +27,101 @@
         line-height: 1.6;
       }
       header {
-        background: url('https://images.unsplash.com/photo-1607968565048-eaebfbf0f78e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
-        padding: 5rem 1rem;
+        background: #004e3d;
+        padding: 3rem 1rem;
         color: white;
         text-align: center;
       }
       header h1 {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
         margin-bottom: 1rem;
       }
       header p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         max-width: 600px;
         margin: 0 auto;
       }
-      main {
-        max-width: 1000px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-      }
-      .form-embed, .content {
-        background: white;
+      .top-section {
+        background-color: #ffffff;
+        border-radius: 12px;
         padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        margin-bottom: 2rem;
+        margin: 2rem auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        max-width: 1000px;
       }
-      .content h2 {
-        font-size: 1.75rem;
+      .top-section h2 {
         color: var(--primary);
+        font-size: 1.75rem;
         margin-bottom: 1rem;
       }
-      .content ul {
-        list-style: disc;
-        padding-left: 1.5rem;
+      .top-section p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
       }
       iframe {
         width: 100%;
         height: 600px;
         border: none;
       }
+      .usp {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      .usp div {
+        background-color: #f0f0f0;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+      .usp div h3 {
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+      }
       footer {
         background: #e0e0e0;
         text-align: center;
         padding: 1rem;
         font-size: 0.9rem;
+        margin-top: 2rem;
       }
       @media (max-width: 600px) {
-        header h1 {
-          font-size: 1.8rem;
-        }
-        iframe {
-          height: 700px;
+        .usp {
+          grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>Lej en mobilkran i København</h1>
-      <p>Få 1 leverandør med det samme - Udfyld formularen og kom i gang hurtigt!</p>
+      <h1>Skal du bruge en mobilkran i København?</h1>
+      <p>Få hjælp af en erfaren samarbejdspartner – nemt, hurtigt og uforpligtende</p>
     </header>
 
-    <main>
-      <section class="form-embed">
-        <h2>Få hjælp til dit kranprojekt</h2>
-        <p>Vores samarbejdspartner står klar til at hjælpe dig. Det er nemt, hurtigt og uforpligtende.</p>
-        <iframe src="https://tally.so/r/woaOAV" loading="lazy"></iframe>
-      </section>
+    <section class="top-section">
+      <h2>Få et hurtigt tilbud på kranopgave</h2>
+      <p>Udfyld formularen og bliv kontaktet direkte. Vi matcher dig med den rigtige leverandør.</p>
+      <iframe src="https://tally.so/r/woaOAV" loading="lazy"></iframe>
 
-      <section class="content">
-        <h2>Hvorfor bruge os?</h2>
-        <ul>
-          <li>Hurtigt svar på din henvendelse</li>
-          <li>Erfarne fagfolk med det rette udstyr</li>
-          <li>Kun 1 leverandør - ingen prisjagt</li>
-          <li>Gratis og uforpligtende kontakt</li>
-        </ul>
-      </section>
-    </main>
+      <div class="usp">
+        <div>
+          <h3>Kun én leverandør</h3>
+          <p>Ingen prisjagt eller spam. Du får kontakt til den rette fagmand med det samme.</p>
+        </div>
+        <div>
+          <h3>Lokalt i København</h3>
+          <p>Vi kender markedet og sender din forespørgsel videre til den bedst egnede partner.</p>
+        </div>
+        <div>
+          <h3>Erfarne fagfolk</h3>
+          <p>Vores leverandør har mange års erfaring med mobilkraner og tunge løft.</p>
+        </div>
+        <div>
+          <h3>Hurtigt og nemt</h3>
+          <p>Det tager under 1 minut at udfylde formularen. Ingen login. Ingen gebyrer.</p>
+        </div>
+      </div>
+    </section>
 
     <footer>
       &copy; 2025 Kranservice KBH - Din lokale partner i København og omegn.
