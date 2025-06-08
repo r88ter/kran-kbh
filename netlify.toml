@@ -1,10 +1,10 @@
 [[redirects]]
-  from = "/leverandor"
-  to = "/leverandor.html"
+  from = "/leads/leverandor"
+  to = "/leads/leverandor.html"
   status = 200
   force = true
 
 [[headers]]
-  for = "/leverandor.html"
+  for = "/leads/leverandor.html"
   [headers.values]
     Basic-Auth = "leverandor:superhemmeligtkodeord"
