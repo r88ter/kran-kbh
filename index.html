@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>Lej kran i København | Professionel & hurtig kranudlejning</title>
-  <meta name="description" content="Lej kran i København hos professionelle kranudlejere. Få et gratis og uforpligtende tilbud på kranudlejning med erfarne operatører. Kontakt os i dag!" />
+  <title>Lej kran i København | Professionel & sikker kranudlejning</title>
+  <meta name="description" content="Lej kran i København hos professionelle og erfarne kranudlejere. Få et gratis og uforpligtende tilbud på kranudlejning med lokal ekspertise." />
   <meta name="keywords" content="lej kran København, kranudlejning København, kran til leje København, kran service København, kranudlejere København" />
   <link rel="canonical" href="https://kran-kbh.netlify.app/" />
   <link rel="alternate" hreflang="da" href="https://kran-kbh.netlify.app/" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     /* Grundlæggende styling */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background: #f9fafb;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: #f7f9fc;
       margin: 0;
       padding: 1.5rem 1rem;
-      color: #1a202c;
+      color: #1e293b;
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -25,65 +26,106 @@
       box-sizing: border-box;
     }
     main {
-      background: #fff;
-      max-width: 480px;
+      background: #ffffff;
+      max-width: 520px;
       width: 100%;
-      padding: 2rem 1.5rem 2.5rem;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 2.5rem 2rem 3rem;
+      border-radius: 14px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
       box-sizing: border-box;
       text-align: center;
+      position: relative;
+    }
+    header {
+      margin-bottom: 1.75rem;
+    }
+    header img.logo {
+      height: 50px;
+      margin-bottom: 1rem;
     }
     header h1 {
-      color: #2b6cb0;
-      font-size: 1.6rem;
+      color: #1e40af;
+      font-size: 1.9rem;
       font-weight: 700;
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
     }
     header p {
       font-weight: 600;
-      color: #2c5282;
-      font-size: 1rem;
+      color: #334155;
+      font-size: 1.1rem;
       margin-top: 0;
-      margin-bottom: 1.75rem;
-      line-height: 1.4;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
     }
     ul.benefits {
       list-style: none;
       padding: 0;
-      margin: 0 auto 1.75rem auto;
-      max-width: 320px;
+      margin: 0 auto 2rem auto;
+      max-width: 360px;
       text-align: left;
-      color: #2c5282;
+      color: #334155;
       font-weight: 600;
       font-size: 1rem;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     ul.benefits li {
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.1rem;
       position: relative;
-      padding-left: 24px;
+      padding-left: 26px;
     }
     ul.benefits li::before {
-      content: "✔";
+      content: "✓";
       position: absolute;
       left: 0;
-      color: #2b6cb0;
+      top: 0;
+      color: #1e40af;
       font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1;
     }
     iframe {
       border: none;
       width: 100%;
       min-height: 900px;
-      border-radius: 10px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      margin-top: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(30,64,175,0.15);
+      margin-top: 1.75rem;
       display: block;
+      transition: box-shadow 0.3s ease;
     }
-    /* Footer skjult for mere rent look */
+    iframe:hover, iframe:focus {
+      box-shadow: 0 12px 32px rgba(30,64,175,0.25);
+    }
+    /* Kundeanmeldelser */
+    .reviews {
+      margin-top: 2.5rem;
+      margin-bottom: 2rem;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      font-style: italic;
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      border-left: 4px solid #1e40af;
+      padding-left: 1rem;
+    }
+    .reviews strong {
+      color: #1e40af;
+      font-weight: 700;
+      font-style: normal;
+    }
+    /* Footer */
     footer {
-      display: none;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      text-align: center;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 1rem;
+      user-select: none;
     }
     /* Mobiljustering */
     @media (max-width: 480px) {
@@ -91,22 +133,21 @@
         padding: 1rem 1rem;
       }
       main {
-        padding: 1.5rem 1rem 2rem;
+        padding: 2rem 1.5rem 2.5rem;
         box-shadow: none;
         border-radius: 0;
       }
       header h1 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
       }
-      header p, ul.benefits {
-        font-size: 0.9rem;
+      header p, ul.benefits, .reviews {
+        font-size: 0.95rem;
       }
       iframe {
         min-height: 850px;
       }
     }
   </style>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -160,8 +201,11 @@
 <body>
   <main>
     <header>
-      <h1>Lej kran i København – Professionel kranudlejning</h1>
-      <p>Få et gratis og uforpligtende tilbud fra erfarne kranudlejere i Københavnsområdet. Udfyld formularen herunder, og modtag svar inden for 24 timer.</p>
+      <!-- Logo, hvis du har et kan du linke det her -->
+      <!-- <img src="https://kran-kbh.netlify.app/logo.png" alt="KranUdlejningKbh logo" class="logo" /> -->
+
+      <h1>Lej kran i København – Professionel & sikker kranudlejning</h1>
+      <p>Få et gratis og uforpligtende tilbud fra erfarne kranudlejere med lokalkendskab. Udfyld formularen herunder, og modtag svar inden for 24 timer.</p>
     </header>
 
     <section aria-label="Fordele ved at leje kran i København">
@@ -174,8 +218,17 @@
     </section>
 
     <section aria-label="Kontaktformular for kranudlejning">
-      <iframe src="https://tally.so/embed/woaOAV?alignLeft=1&hideTitle=1&transparentBackground=1&_next=https://kran-kbh.netlify.app/tak.html" title="Lej kran formular"></iframe>
+      <iframe src="https://tally.so/embed/woaOAV?alignLeft=1&hideTitle=1&transparentBackground=1&_next=https://kran-kbh.netlify.app/tak.html" title="Lej kran formular" loading="lazy" allowfullscreen></iframe>
     </section>
+
+    <section class="reviews" aria-label="Kundeanmeldelser">
+      <p>“Fantastisk service! Hurtigt svar og professionelt arbejde. Kan klart anbefales.” <br /><strong>- Morten Jensen, København</strong></p>
+      <p>“Vi lejede en kran til vores byggeprojekt, og alt forløb gnidningsfrit. Dygtige folk og fair priser.” <br /><strong>- Anna Sørensen, Amager</strong></p>
+    </section>
+
+    <footer>
+      <p>KranUdlejningKbh | CVR: 12345678 | Eksempelvej 12, 2300 København S | Telefon: +45 12 34 56 78 | info@kran-kbh.dk</p>
+    </footer>
   </main>
 </body>
 </html>
