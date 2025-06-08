@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <title>Betaling</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Betaling</h1>
+  <div id="payment-info"></div>
+  <button id="pay-button">Betal med Stripe</button>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const leadId = params.get('id');
+
+    document.getElementById('payment-info').innerText = `Du betaler for lead #${leadId}`;
+
+    document.getElementById('pay-button').onclick = () => {
+      // Her skal Stripe Checkout integreres
+      alert('Her skal Stripe Checkout implementeres!');
+      // Efter betaling kan redirect ske til thanks.html
+      // location.href = 'thanks.html';
+    };
+  </script>
+</body>
+</html>
