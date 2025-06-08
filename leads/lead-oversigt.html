@@ -6,69 +6,50 @@
   <title>Lead Oversigt - Kranudlejning København</title>
   <meta name="description" content="Oversigt over varme leads til kranudlejning i Københavnsområdet. Hurtig adgang til nye kundehenvendelser." />
   <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      margin: 0;
       background: #f9f9f9;
       color: #222;
+      margin: 0; padding: 1rem;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1rem;
     }
-
     h1 {
-      margin-bottom: 1rem;
       color: #0a74da;
+      margin-bottom: 1rem;
       text-align: center;
     }
-
     #lead-list {
       list-style: none;
       padding: 0;
       max-width: 600px;
       width: 100%;
     }
-
     #lead-list li {
       background: white;
       margin-bottom: 1rem;
       padding: 1rem 1.5rem;
       border-radius: 6px;
       box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-      transition: box-shadow 0.2s ease;
       cursor: pointer;
+      transition: box-shadow 0.2s ease;
     }
-
     #lead-list li:hover {
       box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
     }
-
     .lead-name {
       font-weight: 600;
       font-size: 1.1rem;
       margin-bottom: 0.2rem;
-      color: #222;
     }
-
-    .lead-email {
+    .lead-email, .lead-phone {
       font-size: 0.9rem;
       color: #555;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     }
-
-    .lead-phone {
-      font-size: 0.9rem;
-      color: #555;
-    }
-
     .no-leads {
       max-width: 600px;
       background: #fff3cd;
@@ -80,65 +61,125 @@
       margin-top: 2rem;
       font-weight: 600;
     }
-
-    @media (max-width: 480px) {
-      #lead-list li {
-        padding: 1rem;
-      }
+    #login {
+      max-width: 320px;
+      background: white;
+      padding: 2rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      text-align: center;
+    }
+    #password-input {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    #login button {
+      background: #0a74da;
+      border: none;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #login button:hover {
+      background: #095bb5;
     }
   </style>
 </head>
 <body>
+
   <h1>Lead Oversigt - Kranudlejning København</h1>
-  <ul id="lead-list">
-    <li>Indlæser leads...</li>
-  </ul>
+
+  <div id="login">
+    <p>Indtast kodeord for at se leads</p>
+    <input type="password" id="password-input" placeholder="Kodeord" />
+    <button id="login-btn">Log ind</button>
+    <p id="login-error" style="color:#b00020; display:none;">Forkert kodeord, prøv igen.</p>
+  </div>
+
+  <ul id="lead-list" style="display:none;"></ul>
 
   <script>
-    // Skift denne URL til dit API endpoint, der returnerer leads som JSON
-    const apiUrl = "https://dit-api-endpoint/lead";
+    const CORRECT_PASSWORD = "MitHemmeligeKodeord"; // Sæt dit kodeord her
+
+    const loginDiv = document.getElementById("login");
+    const leadList = document.getElementById("lead-list");
+    const loginBtn = document.getElementById("login-btn");
+    const passwordInput = document.getElementById("password-input");
+    const loginError = document.getElementById("login-error");
+
+    loginBtn.addEventListener("click", () => {
+      const val = passwordInput.value.trim();
+      if (val === CORRECT_PASSWORD) {
+        loginDiv.style.display = "none";
+        leadList.style.display = "block";
+        hentLeads();
+      } else {
+        loginError.style.display = "block";
+      }
+    });
+
+    // Google Sheets CSV URL - publiceret ark som CSV
+    // Sådan finder du URL:
+    // 1. Åbn dit Google Sheet
+    // 2. Klik Filer -> Publicer på nettet -> Vælg ark -> Vælg CSV
+    // 3. Kopier den URL herunder
+    const sheetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?output=csv";
 
     async function hentLeads() {
-      const ul = document.getElementById("lead-list");
-      ul.innerHTML = "<li>Indlæser leads...</li>";
-
+      leadList.innerHTML = "<li>Indlæser leads...</li>";
       try {
-        const res = await fetch(apiUrl);
+        const res = await fetch(sheetCsvUrl);
         if (!res.ok) throw new Error("Netværksfejl");
 
-        const data = await res.json();
+        const csvText = await res.text();
 
-        if (data.length === 0) {
-          ul.innerHTML = '<div class="no-leads">Ingen nye leads lige nu.</div>';
+        const leads = csvTilArray(csvText);
+
+        if (leads.length === 0) {
+          leadList.innerHTML = '<div class="no-leads">Ingen nye leads lige nu.</div>';
           return;
         }
 
-        ul.innerHTML = "";
+        leadList.innerHTML = "";
 
-        data.forEach((lead) => {
+        leads.forEach((lead) => {
           const li = document.createElement("li");
-
           li.innerHTML = `
-            <div class="lead-name">${lead.name || "Ukendt navn"}</div>
-            <div class="lead-email">📧 ${lead.email || "-"}</div>
-            <div class="lead-phone">📞 ${lead.phone || "-"}</div>
+            <div class="lead-name">${lead.Navn || "Ukendt navn"}</div>
+            <div class="lead-email">📧 ${lead.Email || "-"}</div>
+            <div class="lead-phone">📞 ${lead.Telefon || "-"}</div>
           `;
-
-          // Tilføj eventuelt link eller funktionalitet til at se mere eller betale her
           li.addEventListener("click", () => {
-            alert(`Se detaljer for ${lead.name || "lead"}`);
-            // Eller redirect til betalingsside etc.
+            alert(`Se detaljer for ${lead.Navn || "lead"}`);
           });
-
-          ul.appendChild(li);
+          leadList.appendChild(li);
         });
       } catch (error) {
-        ul.innerHTML = `<div class="no-leads">Fejl ved hentning af leads. Prøv igen senere.</div>`;
+        leadList.innerHTML = `<div class="no-leads">Fejl ved hentning af leads. Prøv igen senere.</div>`;
         console.error(error);
       }
     }
 
-    hentLeads();
+    // Simpel CSV-parser til at konvertere CSV til array af objekter
+    function csvTilArray(csv) {
+      const lines = csv.trim().split("\n");
+      const headers = lines[0].split(",").map(h => h.trim());
+      const data = lines.slice(1).map(line => {
+        const values = line.split(",").map(v => v.trim());
+        const obj = {};
+        headers.forEach((header, i) => {
+          obj[header] = values[i] || "";
+        });
+        return obj;
+      });
+      return data;
+    }
   </script>
 </body>
 </html>
