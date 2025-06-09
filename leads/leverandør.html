@@ -113,7 +113,7 @@
 
         rows.forEach((row, index) => {
           const date = row.c[0]?.v || "";
-          const area = row.c[10]?.v || "";
+          const area = row.k[1]?.v || "";
           const task = row.c[2]?.v || "";
 
           const tr = document.createElement("tr");
