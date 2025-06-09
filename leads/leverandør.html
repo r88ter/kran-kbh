@@ -51,42 +51,45 @@
   </table>
 
   <script>
-    const SHEET_ID = '1NV_AjN1zCMYHxmCVlSq0a8rmPG84vqgJR_jPFEIMPc4';
-    const API_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+  const SHEET_ID = '1NV_AjN1zCMYHxmCVlSq0a8rmPG84vqgJR_jPFEIMPc4';
+  const API_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
-    function convertSheetDate(value) {
-      if (!value) return "-";
-      const base = new Date(Date.UTC(1899, 11, 30));
-      const date = new Date(base.getTime() + value * 24 * 60 * 60 * 1000);
-      return date.toLocaleDateString("da-DK");
+  function convertGoogleDate(value) {
+    try {
+      if (typeof value === "object" && value?.f) return value.f; // Brug formatteret string hvis den findes
+      if (typeof value === "number") {
+        const baseDate = new Date(Date.UTC(1899, 11, 30));
+        baseDate.setUTCDate(baseDate.getUTCDate() + value);
+        return baseDate.toISOString().split('T')[0]; // YYYY-MM-DD
+      }
+      return value;
+    } catch {
+      return "-";
     }
+  }
 
-    fetch(API_URL)
-      .then(res => res.text())
-      .then(text => {
-        const json = JSON.parse(text.substr(47).slice(0, -2));
-        const rows = json.table.rows;
-        const tbody = document.querySelector("#leads tbody");
+  fetch(API_URL)
+    .then(res => res.text())
+    .then(text => {
+      const json = JSON.parse(text.substr(47).slice(0, -2));
+      const rows = json.table.rows;
+      const tbody = document.querySelector("#leads tbody");
 
-        rows.forEach((row) => {
-          const dateRaw = row.c[7]?.v;
-          const area = row.c[8]?.v || "-"; // kolonne K
-          const task = row.c[9]?.v || "-";
-          const date = convertSheetDate(dateRaw);
+      rows.forEach((row, index) => {
+        const date = convertGoogleDate(row.c[7]?.v); // kolonne H
+        const area = row.c[8]?.v || "-";             // kolonne K
+        const task = row.c[9]?.v || "-";              // fx kolonne C
 
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${date}</td>
-            <td>${area}</td>
-            <td>${task}</td>
-            <td><a class="button" href="#">Se (betal)</a></td>
-          `;
-          tbody.appendChild(tr);
-        });
-      })
-      .catch(err => {
-        console.error("Fejl ved hentning af data:", err);
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${date}</td>
+          <td>${area}</td>
+          <td>${task}</td>
+          <td><a class="button" href="#">Se (betal)</a></td>
+        `;
+        tbody.appendChild(tr);
       });
-  </script>
+    });
+</script>
 </body>
 </html>
