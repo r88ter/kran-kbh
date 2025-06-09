@@ -74,7 +74,7 @@
   <table id="leads">
     <thead>
       <tr>
-        <th>Dato</th>
+        <th>Dato for hvornår opgaven skal udføres</th>
         <th>Område</th>
         <th>Opgave</th>
         <th>Handling</th>
@@ -112,9 +112,9 @@
         const tbody = document.querySelector("#leads tbody");
 
         rows.forEach((row, index) => {
-          const date = row.c[8]?.v || "";
-          const area = row.c[10]?.v || "";
-          const task = row.c[11]?.v || "";
+          const date = row.c[7]?.v || "";
+          const area = row.c[8]?.v || "";
+          const task = row.c[9]?.v || "";
 
           const tr = document.createElement("tr");
           tr.innerHTML = `
